@@ -1076,7 +1076,7 @@
                     <div class="timeline-era era-8bit">
                         <span class="era-name">8-bit</span>
                         <span class="era-years">1984-1995</span>
-                        <span class="era-platforms">Atari, Dynavision, MS-DOS</span>
+                        <span class="era-platforms">Atari, Dynavision</span>
                     </div>
                     <div class="timeline-era era-16bit">
                         <span class="era-name">16-bit</span>
@@ -1234,8 +1234,8 @@
     <script>
         // ========== GAME DATA ==========
         const games = [
-            // === MS-DOS ===
-            { nome: "Test Drive III", plataforma: "MS-DOS", anoLancamento: 1990, anoJogado: 1990, genero: "Corrida", status: "Abandonado", fatorNostalgia: "Jogava em Familia, Primeiro Console", notaFinal: "5,25", memorias: "Lembro que jogava com o porsche amarelo. Nao me lembro de ter vencido e se tinha final", descricao: "Test Drive III (1990) impressionou com graficos 3D e carros de luxo. Permitia explorar paisagens, fugir da policia e personalizar veiculos, um avanco a epoca." },
+            // === PC ===
+            { nome: "Test Drive III", plataforma: "PC", anoLancamento: 1990, anoJogado: 1990, genero: "Corrida", status: "Abandonado", fatorNostalgia: "Jogava em Familia, Primeiro Console", notaFinal: "5,25", memorias: "Lembro que jogava com o porsche amarelo. Nao me lembro de ter vencido e se tinha final", descricao: "Test Drive III (1990) impressionou com graficos 3D e carros de luxo. Permitia explorar paisagens, fugir da policia e personalizar veiculos, um avanco a epoca." },
             // === Dynavision ===
             { nome: "Ice Climber", plataforma: "Dynavision", anoLancamento: 1985, anoJogado: 1990, genero: "Plataforma", status: "Nao Finalizado", fatorNostalgia: "Jogava em Familia", notaFinal: "5,75", memorias: "Jogava junto com o Rapha", descricao: "Ice Climber era um divertido jogo de plataforma onde os jogadores escalavam montanhas geladas, quebrando blocos e enfrentando inimigos." },
             { nome: "Excitebike", plataforma: "Dynavision", anoLancamento: 1984, anoJogado: 1990, genero: "Corrida", status: "Nao Finalizado", fatorNostalgia: "Competicao Local, Jogava em Familia", notaFinal: "6,25", memorias: "Era um jogo divertido que montava algumas pistas tambem", descricao: "Excitebike era um jogo de corrida de motocross popular, conhecido por sua jogabilidade inovadora de edicao de pistas." },
@@ -1309,7 +1309,6 @@
         // ========== PLATFORM COLORS ==========
         const platformColors = {
             'Atari': '#E2001A',
-            'MS-DOS': '#333333',
             'Dynavision': '#FF6B00',
             'Super Famicom': '#7B2D8E',
             'PlayStation 1': '#003087',
@@ -1324,7 +1323,6 @@
 
         const platformShortNames = {
             'Atari': 'Atari',
-            'MS-DOS': 'MS-DOS',
             'Dynavision': 'Dynavision',
             'Super Famicom': 'SNES',
             'PlayStation 1': 'PS1',
@@ -1337,7 +1335,7 @@
             'Switch 2': 'SW2'
         };
 
-        const platformFilterNames = ['Todos', 'Atari', 'MS-DOS', 'Dynavision', 'Super Famicom', 'PlayStation 1', 'PlayStation 2', 'PlayStation 3', 'PlayStation 4', 'PlayStation 5', 'Xbox 360', 'PC', 'Switch 2'];
+        const platformFilterNames = ['Todos', 'Atari', 'Dynavision', 'Super Famicom', 'PlayStation 1', 'PlayStation 2', 'PlayStation 3', 'PlayStation 4', 'PlayStation 5', 'Xbox 360', 'PC', 'Switch 2'];
 
         // ========== STATE ==========
         let currentPlatform = 'Todos';
@@ -1428,7 +1426,7 @@
 
             // Era order mapping
             const eraOrder = {
-                'Atari': 1, 'MS-DOS': 1, 'Dynavision': 1,
+                'Atari': 1, 'Dynavision': 1,
                 'Super Famicom': 2,
                 'PlayStation 1': 3, 'PlayStation 2': 3,
                 'PlayStation 3': 4, 'Xbox 360': 4, 'PC': 4,
