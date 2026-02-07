@@ -641,11 +641,6 @@
             border-top: 1px solid var(--border-color);
         }
 
-        .card-quem {
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            margin-top: 0.3rem;
-        }
 
         /* List View Card */
         .games-grid.list-view .game-card {
@@ -674,8 +669,7 @@
             flex: 1;
         }
 
-        .games-grid.list-view .card-nostalgia,
-        .games-grid.list-view .card-quem {
+        .games-grid.list-view .card-nostalgia {
             display: none;
         }
 
@@ -1180,7 +1174,7 @@
             <div class="filter-group">
                 <span class="filter-label">Ordenar</span>
                 <select class="filter-select" id="sortFilter" onchange="applyFilters()">
-                    <option value="padrao">Padrao</option>
+                    <option value="linha-do-tempo" selected>Linha do Tempo</option>
                     <option value="nome-az">Nome A-Z</option>
                     <option value="nome-za">Nome Z-A</option>
                     <option value="ano-lancamento">Ano Lancamento</option>
@@ -1240,32 +1234,76 @@
     <script>
         // ========== GAME DATA ==========
         const games = [
-            { nome: "Test Drive III", plataforma: "MS-DOS", anoLancamento: 1990, anoJogado: 1993, genero: "Corrida", status: "Abandonado", fatorNostalgia: "Jogava em Familia, Primeiro Console", notaFinal: "5,25", memorias: "Lembro que jogava com o porsche amarelo. Nao me lembro de ter vencido e se tinha final", descricao: "Test Drive III (1990) impressionou com graficos 3D e carros de luxo. Permitia explorar paisagens, fugir da policia e personalizar veiculos, um avanco a epoca.", quem: "Bruno" },
-            { nome: "The Last of Us", plataforma: "PlayStation 3", anoLancamento: 2013, anoJogado: 2013, genero: "Acao-aventura", status: "Finalizado", fatorNostalgia: "Sem Nostalgia", notaFinal: "7,5", memorias: "Foi um dos ultimos jogos que joguei no PS3, lembro que venci rapidamente porque queria comprar o PS4. Preciso rejogar no PS5", descricao: "Em 2013, The Last of Us surpreendeu com sua narrativa pos-apocaliptica emocionante e personagens complexos, Joel e Ellie.", quem: "Bruno, Raphael" },
-            { nome: "Ice Climber", plataforma: "Dynavision", anoLancamento: 1985, anoJogado: 1995, genero: "Plataforma", status: "Nao Finalizado", fatorNostalgia: "Jogava em Familia", notaFinal: "5,75", memorias: "Jogava junto com o Rapha", descricao: "Ice Climber era um divertido jogo de plataforma onde os jogadores escalavam montanhas geladas, quebrando blocos e enfrentando inimigos.", quem: "Bruno, Raphael" },
-            { nome: "Excitebike", plataforma: "Dynavision", anoLancamento: 1984, anoJogado: 1995, genero: "Corrida", status: "Nao Finalizado", fatorNostalgia: "Competicao Local, Jogava em Familia", notaFinal: "6,25", memorias: "Era um jogo divertido que montava algumas pistas tambem", descricao: "Excitebike era um jogo de corrida de motocross popular, conhecido por sua jogabilidade inovadora de edicao de pistas.", quem: "Bruno, Raphael" },
-            { nome: "Town & Country Surf Designs", plataforma: "Dynavision", anoLancamento: 1988, anoJogado: 1995, genero: "Esporte", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "Skate e Surf eram os que mais jogavamos juntos, epoca de perdeu passa o controle", descricao: "Town & Country Surf Designs: Wood & Water Rage era um jogo de surf e skate popular no Dynavision.", quem: "Bruno, Raphael" },
-            { nome: "Yie Ar Kung Fu", plataforma: "Dynavision", anoLancamento: 1985, anoJogado: 1995, genero: "Luta", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Yie Ar Kung Fu foi um popular jogo de luta dos anos 80 para Dynavision.", quem: "Bruno, Raphael" },
-            { nome: "Double Dragon II - The Revenge", plataforma: "Dynavision", anoLancamento: 1990, anoJogado: 1995, genero: "Beat em up", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Double Dragon II era um beat em up classico, popular por sua acao de rua e jogabilidade cooperativa.", quem: "Bruno, Raphael" },
-            { nome: "Battletoads", plataforma: "Dynavision", anoLancamento: 1993, anoJogado: 1995, genero: "Beat em up", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Battletoads era conhecido por sua dificuldade extrema e graficos de desenho animado.", quem: "Bruno, Raphael" },
-            { nome: "Super Mario Bros", plataforma: "Dynavision", anoLancamento: 1989, anoJogado: 1995, genero: "Plataforma", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Super Mario Bros. foi um marco. Popularizou os jogos de plataforma e o mascote da Nintendo, Mario.", quem: "Bruno, Raphael" },
-            { nome: "Ninja Gaiden", plataforma: "Dynavision", anoLancamento: 1989, anoJogado: 1995, genero: "Acao", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Ninja Gaiden, um classico de acao e plataforma, era conhecido por sua dificuldade implacavel.", quem: "Bruno, Raphael" },
-            { nome: "Chip n Dale", plataforma: "Dynavision", anoLancamento: 1993, anoJogado: 1995, genero: "Plataforma", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Chip n Dale para Dynavision era um divertido jogo de plataforma onde os jogadores controlavam os esquilos.", quem: "Bruno, Raphael" },
-            { nome: "Ninja Gaiden II", plataforma: "Dynavision", anoLancamento: 1990, anoJogado: 1995, genero: "Acao", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Ninja Gaiden II no Dynavision marcou epoca com sua acao intensa e dificuldade desafiadora.", quem: "Bruno, Raphael" },
-            { nome: "Road Fighter", plataforma: "Dynavision", anoLancamento: 1991, anoJogado: 1995, genero: "Corrida", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Road Fighter era um jogo de corrida arcade, onde o objetivo era desviar de carros e coletar combustivel.", quem: "Bruno, Raphael" },
-            { nome: "Elevator Action", plataforma: "Dynavision", anoLancamento: 1987, anoJogado: 1995, genero: "Acao", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Um classico de arcade onde voce, como um espiao, desce um predio usando elevadores para coletar documentos.", quem: "Bruno, Raphael" },
-            { nome: "Super Mario Bros II", plataforma: "Dynavision", anoLancamento: 1988, anoJogado: 1995, genero: "Plataforma", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Super Mario Bros II oferecia uma experiencia similar ao original com fases adicionais.", quem: "Bruno, Raphael" },
-            { nome: "Prince of Persia", plataforma: "Dynavision", anoLancamento: 1993, anoJogado: 1995, genero: "Aventura", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Prince of Persia era conhecido por sua animacao fluida e gameplay de plataforma com quebra-cabecas.", quem: "Bruno, Raphael" },
-            { nome: "Duck Tales 2", plataforma: "Dynavision", anoLancamento: 1994, anoJogado: 1995, genero: "Plataforma", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "DuckTales 2 expandia a aventura de Tio Patinhas em busca de tesouros com novos itens e fases mais complexas.", quem: "Bruno, Raphael" },
-            { nome: "Mega Man 6", plataforma: "Dynavision", anoLancamento: 1997, anoJogado: 1995, genero: "Plataforma", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Mega Man 6 (1993) no NES, um classico de acao e plataforma com Rush Power Armor e Jet Armor.", quem: "Bruno, Raphael" },
-            { nome: "Soccer", plataforma: "Dynavision", anoLancamento: 1988, anoJogado: 1995, genero: "Esporte", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Soccer era um jogo de esporte generico no Dynavision. Simples e divertido.", quem: "Bruno, Raphael" },
-            { nome: "Tennis", plataforma: "Dynavision", anoLancamento: 1994, anoJogado: 1995, genero: "Esporte", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Tennis para Dynavision: Um classico que levava a emocao das quadras para dentro de casa.", quem: "Bruno, Raphael" },
-            { nome: "Mach Rider", plataforma: "Dynavision", anoLancamento: 1994, anoJogado: 1995, genero: "Corrida", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Mach Rider e um jogo de corrida futurista onde voce pilota uma moto e atira em inimigos.", quem: "Bruno, Raphael" },
-            { nome: "R.C. Pro-AM II", plataforma: "Dynavision", anoLancamento: 1992, anoJogado: 1995, genero: "Corrida", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "R.C. Pro-Am II (1992, NES) e um jogo de corrida de carros de controle remoto com modo multiplayer.", quem: "Bruno, Raphael" },
-            { nome: "Tiger Heli", plataforma: "Dynavision", anoLancamento: 1986, anoJogado: 1995, genero: "Tiro", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Tiger Heli e um classico jogo de tiro de helicoptero lancado em 1985.", quem: "Bruno, Raphael" },
-            { nome: "Double Dragon", plataforma: "Dynavision", anoLancamento: 1991, anoJogado: 1995, genero: "Beat em up", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Double Dragon e um classico beat em up onde os irmaos Billy e Jimmy Lee lutam nas ruas.", quem: "Bruno, Raphael" },
-            { nome: "The Simpsons - Bart vs. The Space Mutants", plataforma: "Dynavision", anoLancamento: 1991, anoJogado: 1995, genero: "Plataforma", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Bart precisa impedir alienigenas mutantes de coletar objetos roxos para construir uma arma.", quem: "Bruno, Raphael" },
-            { nome: "Commando", plataforma: "Dynavision", anoLancamento: 1986, anoJogado: 1995, genero: "Tiro", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Commando: Um classico de tiro vertical onde voce controla um soldado em missoes de resgate.", quem: "Bruno, Raphael" }
+            // === MS-DOS ===
+            { nome: "Test Drive III", plataforma: "MS-DOS", anoLancamento: 1990, anoJogado: 1993, genero: "Corrida", status: "Abandonado", fatorNostalgia: "Jogava em Familia, Primeiro Console", notaFinal: "5,25", memorias: "Lembro que jogava com o porsche amarelo. Nao me lembro de ter vencido e se tinha final", descricao: "Test Drive III (1990) impressionou com graficos 3D e carros de luxo. Permitia explorar paisagens, fugir da policia e personalizar veiculos, um avanco a epoca." },
+            // === Dynavision ===
+            { nome: "Ice Climber", plataforma: "Dynavision", anoLancamento: 1985, anoJogado: 1995, genero: "Plataforma", status: "Nao Finalizado", fatorNostalgia: "Jogava em Familia", notaFinal: "5,75", memorias: "Jogava junto com o Rapha", descricao: "Ice Climber era um divertido jogo de plataforma onde os jogadores escalavam montanhas geladas, quebrando blocos e enfrentando inimigos." },
+            { nome: "Excitebike", plataforma: "Dynavision", anoLancamento: 1984, anoJogado: 1995, genero: "Corrida", status: "Nao Finalizado", fatorNostalgia: "Competicao Local, Jogava em Familia", notaFinal: "6,25", memorias: "Era um jogo divertido que montava algumas pistas tambem", descricao: "Excitebike era um jogo de corrida de motocross popular, conhecido por sua jogabilidade inovadora de edicao de pistas." },
+            { nome: "Town & Country Surf Designs", plataforma: "Dynavision", anoLancamento: 1988, anoJogado: 1995, genero: "Esporte", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "Skate e Surf eram os que mais jogavamos juntos, epoca de perdeu passa o controle", descricao: "Town & Country Surf Designs: Wood & Water Rage era um jogo de surf e skate popular no Dynavision." },
+            { nome: "Yie Ar Kung Fu", plataforma: "Dynavision", anoLancamento: 1985, anoJogado: 1995, genero: "Luta", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Yie Ar Kung Fu foi um popular jogo de luta dos anos 80 para Dynavision." },
+            { nome: "Double Dragon II - The Revenge", plataforma: "Dynavision", anoLancamento: 1990, anoJogado: 1995, genero: "Beat em up", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Double Dragon II era um beat em up classico, popular por sua acao de rua e jogabilidade cooperativa." },
+            { nome: "Battletoads", plataforma: "Dynavision", anoLancamento: 1993, anoJogado: 1995, genero: "Beat em up", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Battletoads era conhecido por sua dificuldade extrema e graficos de desenho animado." },
+            { nome: "Super Mario Bros", plataforma: "Dynavision", anoLancamento: 1989, anoJogado: 1995, genero: "Plataforma", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Super Mario Bros. foi um marco. Popularizou os jogos de plataforma e o mascote da Nintendo, Mario." },
+            { nome: "Ninja Gaiden", plataforma: "Dynavision", anoLancamento: 1989, anoJogado: 1995, genero: "Acao", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Ninja Gaiden, um classico de acao e plataforma, era conhecido por sua dificuldade implacavel." },
+            { nome: "Chip n Dale", plataforma: "Dynavision", anoLancamento: 1993, anoJogado: 1995, genero: "Plataforma", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Chip n Dale para Dynavision era um divertido jogo de plataforma onde os jogadores controlavam os esquilos." },
+            { nome: "Ninja Gaiden II", plataforma: "Dynavision", anoLancamento: 1990, anoJogado: 1995, genero: "Acao", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Ninja Gaiden II no Dynavision marcou epoca com sua acao intensa e dificuldade desafiadora." },
+            { nome: "Road Fighter", plataforma: "Dynavision", anoLancamento: 1991, anoJogado: 1995, genero: "Corrida", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Road Fighter era um jogo de corrida arcade, onde o objetivo era desviar de carros e coletar combustivel." },
+            { nome: "Elevator Action", plataforma: "Dynavision", anoLancamento: 1987, anoJogado: 1995, genero: "Acao", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Um classico de arcade onde voce, como um espiao, desce um predio usando elevadores para coletar documentos." },
+            { nome: "Super Mario Bros II", plataforma: "Dynavision", anoLancamento: 1988, anoJogado: 1995, genero: "Plataforma", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Super Mario Bros II oferecia uma experiencia similar ao original com fases adicionais." },
+            { nome: "Prince of Persia", plataforma: "Dynavision", anoLancamento: 1993, anoJogado: 1995, genero: "Aventura", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Prince of Persia era conhecido por sua animacao fluida e gameplay de plataforma com quebra-cabecas." },
+            { nome: "Duck Tales 2", plataforma: "Dynavision", anoLancamento: 1994, anoJogado: 1995, genero: "Plataforma", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "DuckTales 2 expandia a aventura de Tio Patinhas em busca de tesouros com novos itens e fases mais complexas." },
+            { nome: "Mega Man 6", plataforma: "Dynavision", anoLancamento: 1997, anoJogado: 1995, genero: "Plataforma", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Mega Man 6 (1993) no NES, um classico de acao e plataforma com Rush Power Armor e Jet Armor." },
+            { nome: "Soccer", plataforma: "Dynavision", anoLancamento: 1988, anoJogado: 1995, genero: "Esporte", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Soccer era um jogo de esporte generico no Dynavision. Simples e divertido." },
+            { nome: "Tennis", plataforma: "Dynavision", anoLancamento: 1994, anoJogado: 1995, genero: "Esporte", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Tennis para Dynavision: Um classico que levava a emocao das quadras para dentro de casa." },
+            { nome: "Mach Rider", plataforma: "Dynavision", anoLancamento: 1994, anoJogado: 1995, genero: "Corrida", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Mach Rider e um jogo de corrida futurista onde voce pilota uma moto e atira em inimigos." },
+            { nome: "R.C. Pro-AM II", plataforma: "Dynavision", anoLancamento: 1992, anoJogado: 1995, genero: "Corrida", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "R.C. Pro-Am II (1992, NES) e um jogo de corrida de carros de controle remoto com modo multiplayer." },
+            { nome: "Tiger Heli", plataforma: "Dynavision", anoLancamento: 1986, anoJogado: 1995, genero: "Tiro", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Tiger Heli e um classico jogo de tiro de helicoptero lancado em 1985." },
+            { nome: "Double Dragon", plataforma: "Dynavision", anoLancamento: 1991, anoJogado: 1995, genero: "Beat em up", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Double Dragon e um classico beat em up onde os irmaos Billy e Jimmy Lee lutam nas ruas." },
+            { nome: "The Simpsons - Bart vs. The Space Mutants", plataforma: "Dynavision", anoLancamento: 1991, anoJogado: 1995, genero: "Plataforma", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Bart precisa impedir alienigenas mutantes de coletar objetos roxos para construir uma arma." },
+            { nome: "Commando", plataforma: "Dynavision", anoLancamento: 1986, anoJogado: 1995, genero: "Tiro", status: "Nao Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "5", memorias: "", descricao: "Commando: Um classico de tiro vertical onde voce controla um soldado em missoes de resgate." },
+            // === Super Famicom ===
+            { nome: "Super Mario World", plataforma: "Super Famicom", anoLancamento: 1991, anoJogado: 1998, genero: "Plataforma", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "9", memorias: "", descricao: "Super Mario World e considerado um dos melhores jogos de plataforma de todos os tempos, com fases secretas e o iconico Yoshi." },
+            { nome: "Mortal Kombat II", plataforma: "Super Famicom", anoLancamento: 1994, anoJogado: 1998, genero: "Luta", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "8", memorias: "", descricao: "Mortal Kombat II trouxe mais personagens, fatalities e graficos melhorados ao SNES." },
+            { nome: "Donkey Kong Country", plataforma: "Super Famicom", anoLancamento: 1994, anoJogado: 1998, genero: "Plataforma", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "9", memorias: "", descricao: "Donkey Kong Country revolucionou os graficos pre-renderizados no SNES com jogabilidade impecavel." },
+            { nome: "Super Mario All-Stars", plataforma: "Super Famicom", anoLancamento: 1993, anoJogado: 1998, genero: "Plataforma", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "8,5", memorias: "", descricao: "Coletanea remasterizada dos classicos Mario Bros 1, 2, 3 e The Lost Levels com graficos 16-bit." },
+            { nome: "Super Metroid", plataforma: "Super Famicom", anoLancamento: 1994, anoJogado: 1998, genero: "Acao-aventura", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "9", memorias: "", descricao: "Super Metroid definiu o genero metroidvania com exploracao nao-linear, atmosfera e boss fights memoraveis." },
+            { nome: "Super Street Fighter II: The New Challengers", plataforma: "Super Famicom", anoLancamento: 1994, anoJogado: 1998, genero: "Luta", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "8", memorias: "", descricao: "Super Street Fighter II adicionou 4 novos personagens e rebalanceou o gameplay do classico de luta." },
+            { nome: "Street Fighter II: The World Warrior", plataforma: "Super Famicom", anoLancamento: 1992, anoJogado: 1998, genero: "Luta", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "8", memorias: "", descricao: "O jogo de luta que definiu uma geracao. Street Fighter II no SNES foi a melhor versao domestica da epoca." },
+            { nome: "International Superstar Soccer Deluxe", plataforma: "Super Famicom", anoLancamento: 1995, anoJogado: 1998, genero: "Esporte", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "8,5", memorias: "", descricao: "ISSS Deluxe e considerado um dos melhores jogos de futebol da era 16-bit, com jogabilidade viciante." },
+            { nome: "Teenage Mutant Ninja Turtles IV: Turtles in Time", plataforma: "Super Famicom", anoLancamento: 1992, anoJogado: 1998, genero: "Beat em up", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "8,5", memorias: "", descricao: "Turtles in Time e um dos melhores beat em ups do SNES, com cooperativo e viagens no tempo." },
+            { nome: "The Simpsons: Bart's Nightmare", plataforma: "Super Famicom", anoLancamento: 1992, anoJogado: 1998, genero: "Plataforma", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "6", memorias: "", descricao: "Bart's Nightmare misturava minigames e plataforma em um mundo surreal dos sonhos de Bart Simpson." },
+            { nome: "The Magical Quest Starring Mickey Mouse", plataforma: "Super Famicom", anoLancamento: 1992, anoJogado: 1998, genero: "Plataforma", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "7,5", memorias: "", descricao: "Mickey em uma aventura magica com fantasias que davam poderes especiais. Graficos lindos para a epoca." },
+            { nome: "The Great Circus Mystery Starring Mickey & Minnie", plataforma: "Super Famicom", anoLancamento: 1994, anoJogado: 1998, genero: "Plataforma", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "7,5", memorias: "", descricao: "Sequencia do Magical Quest com Mickey e Minnie em um misterio no circo. Cooperativo para 2 jogadores." },
+            { nome: "Donkey Kong Country 2: Diddy's Kong Quest", plataforma: "Super Famicom", anoLancamento: 1995, anoJogado: 1998, genero: "Plataforma", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "9,5", memorias: "", descricao: "DKC2 aprimorou tudo do original com level design genial, trilha sonora inesquecivel e desafio na medida certa." },
+            { nome: "Donkey Kong Country 3: Dixie Kong's Double Trouble!", plataforma: "Super Famicom", anoLancamento: 1996, anoJogado: 1998, genero: "Plataforma", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "8", memorias: "", descricao: "DKC3 encerrou a trilogia com Dixie e Kiddy Kong em uma aventura com exploracao e puzzles." },
+            { nome: "The Legend of Zelda: A Link to the Past", plataforma: "Super Famicom", anoLancamento: 1992, anoJogado: 1998, genero: "Acao-aventura", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "9,5", memorias: "", descricao: "A Link to the Past definiu a formula Zelda com o Light e Dark World, dungeons memoraveis e exploracao." },
+            { nome: "Mortal Kombat", plataforma: "Super Famicom", anoLancamento: 1993, anoJogado: 1998, genero: "Luta", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "7", memorias: "", descricao: "O classico jogo de luta que chocou com seus fatalities. Versao SNES censurada mas ainda divertida." },
+            { nome: "Super Mario World 2: Yoshi's Island", plataforma: "Super Famicom", anoLancamento: 1995, anoJogado: 1998, genero: "Plataforma", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "9", memorias: "", descricao: "Yoshi's Island inovou com graficos hand-drawn, Baby Mario e mecanicas unicas de ovos e transformacao." },
+            { nome: "Disney's Goof Troop", plataforma: "Super Famicom", anoLancamento: 1993, anoJogado: 1998, genero: "Acao", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "7,5", memorias: "", descricao: "Goof Troop e um jogo cooperativo de puzzles e acao com Pateta e Max em uma aventura na ilha dos piratas." },
+            { nome: "The Adventures of Batman & Robin", plataforma: "Super Famicom", anoLancamento: 1994, anoJogado: 1998, genero: "Acao", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "7", memorias: "", descricao: "Baseado na serie animada, Batman & Robin oferecia acao side-scrolling com graficos e animacoes fieis ao desenho." },
+            { nome: "Disney's Aladdin", plataforma: "Super Famicom", anoLancamento: 1993, anoJogado: 1998, genero: "Plataforma", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "7,5", memorias: "", descricao: "A versao SNES de Aladdin pela Capcom com jogabilidade de plataforma fluida e graficos coloridos." },
+            { nome: "Disney's The Lion King", plataforma: "Super Famicom", anoLancamento: 1994, anoJogado: 1998, genero: "Plataforma", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "7", memorias: "", descricao: "O Rei Leao no SNES acompanhava Simba de filhote a adulto com dificuldade notoria nas fases iniciais." },
+            { nome: "Super Castlevania IV", plataforma: "Super Famicom", anoLancamento: 1991, anoJogado: 1998, genero: "Acao", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "8,5", memorias: "", descricao: "Super Castlevania IV impressionou com Mode 7, chicote multidirecional e atmosfera gotica impecavel." },
+            { nome: "Indiana Jones' Greatest Adventures", plataforma: "Super Famicom", anoLancamento: 1994, anoJogado: 1998, genero: "Acao", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "7", memorias: "", descricao: "Aventura side-scrolling baseada nos tres filmes classicos de Indiana Jones com fases variadas." },
+            { nome: "Prince of Persia", plataforma: "Super Famicom", anoLancamento: 1992, anoJogado: 1998, genero: "Acao", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "7", memorias: "", descricao: "Prince of Persia no SNES trouxe a animacao rotoscopada classica com graficos melhorados." },
+            { nome: "Super Mario RPG: Legend of the Seven Stars", plataforma: "Super Famicom", anoLancamento: 1996, anoJogado: 1998, genero: "RPG", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "9", memorias: "", descricao: "Colaboracao entre Nintendo e Square que criou um RPG unico com Mario, combate por turnos e humor." },
+            { nome: "Super Mario Kart", plataforma: "Super Famicom", anoLancamento: 1992, anoJogado: 1998, genero: "Corrida", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "8,5", memorias: "", descricao: "O jogo que criou o genero kart racing. Mode 7, itens, multiplayer e pistas iconicas." },
+            { nome: "F-Zero", plataforma: "Super Famicom", anoLancamento: 1991, anoJogado: 1998, genero: "Corrida", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "8", memorias: "", descricao: "F-Zero impressionou com velocidade e uso do Mode 7 para criar corridas futuristas eletrizantes no SNES." },
+            { nome: "Top Gear", plataforma: "Super Famicom", anoLancamento: 1992, anoJogado: 1998, genero: "Corrida", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "7,5", memorias: "", descricao: "Top Gear oferecia corridas em pistas ao redor do mundo com split-screen e trilha sonora marcante." },
+            { nome: "Top Gear 2", plataforma: "Super Famicom", anoLancamento: 1993, anoJogado: 1998, genero: "Corrida", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "7,5", memorias: "", descricao: "Sequencia com mais pistas, upgrades de carro e clima dinamico. Evolucao solida do original." },
+            { nome: "Lemmings", plataforma: "Super Famicom", anoLancamento: 1992, anoJogado: 1998, genero: "Puzzle", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "6,5", memorias: "", descricao: "Lemmings desafiava o jogador a guiar criaturas suicidas ate a saida usando habilidades estrategicas." },
+            { nome: "Super Double Dragon", plataforma: "Super Famicom", anoLancamento: 1992, anoJogado: 1998, genero: "Beat em up", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "7", memorias: "", descricao: "Super Double Dragon trouxe os irmaos Lee ao SNES com novo sistema de combate e cooperativo." },
+            { nome: "Battletoads in Battlemaniacs", plataforma: "Super Famicom", anoLancamento: 1993, anoJogado: 1998, genero: "Beat em up", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "7", memorias: "", descricao: "Versao SNES dos Battletoads com graficos melhorados e a mesma dificuldade brutal do original." },
+            { nome: "Batman Returns", plataforma: "Super Famicom", anoLancamento: 1993, anoJogado: 1998, genero: "Acao", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "7", memorias: "", descricao: "Baseado no filme de Tim Burton, Batman Returns no SNES era um beat em up solido pela Konami." },
+            { nome: "Killer Instinct", plataforma: "Super Famicom", anoLancamento: 1995, anoJogado: 1998, genero: "Luta", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "8", memorias: "", descricao: "Killer Instinct impressionou com graficos pre-renderizados, combo system e personagens unicos no SNES." },
+            { nome: "Demon's Crest", plataforma: "Super Famicom", anoLancamento: 1994, anoJogado: 1998, genero: "Acao", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "7,5", memorias: "", descricao: "Demon's Crest e um jogo de acao e exploracao sombrio onde Firebrand busca Crests magicos." },
+            { nome: "Blackthorne", plataforma: "Super Famicom", anoLancamento: 1994, anoJogado: 1998, genero: "Acao", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "7", memorias: "", descricao: "Blackthorne da Blizzard misturava plataforma e tiro com atmosfera sombria e gameplay cinematografico." },
+            { nome: "Super Star Wars", plataforma: "Super Famicom", anoLancamento: 1992, anoJogado: 1998, genero: "Acao", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "7", memorias: "", descricao: "Super Star Wars adaptava A New Hope em acao side-scrolling com fases de veiculo e dificuldade alta." },
+            { nome: "Nigel Mansell's World Championship Racing", plataforma: "Super Famicom", anoLancamento: 1992, anoJogado: 1998, genero: "Corrida", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "6,5", memorias: "", descricao: "Jogo de corrida de Formula 1 licenciado com Nigel Mansell. Pistas reais e visao cockpit no SNES." },
+            { nome: "Super Bomberman", plataforma: "Super Famicom", anoLancamento: 1993, anoJogado: 1998, genero: "Acao", status: "Finalizado", fatorNostalgia: "Jogava com Amigos", notaFinal: "8", memorias: "", descricao: "Super Bomberman e o classico multiplayer de bombas no SNES. Ate 4 jogadores com multitap, diversao garantida." },
+            { nome: "Super Mario Land (Homebrew)", plataforma: "Super Famicom", anoLancamento: 2019, anoJogado: 2026, genero: "Plataforma", status: "Finalizado", fatorNostalgia: "Sem Nostalgia", notaFinal: "6", memorias: "", descricao: "Versao homebrew de Super Mario Land do Game Boy portada para o Super Famicom por fas." },
+            // === PlayStation 3 ===
+            { nome: "The Last of Us", plataforma: "PlayStation 3", anoLancamento: 2013, anoJogado: 2013, genero: "Acao-aventura", status: "Finalizado", fatorNostalgia: "Sem Nostalgia", notaFinal: "7,5", memorias: "Foi um dos ultimos jogos que joguei no PS3, lembro que venci rapidamente porque queria comprar o PS4. Preciso rejogar no PS5", descricao: "Em 2013, The Last of Us surpreendeu com sua narrativa pos-apocaliptica emocionante e personagens complexos, Joel e Ellie." }
         ];
 
         // ========== PLATFORM COLORS ==========
@@ -1382,14 +1420,31 @@
                 if (genre && game.genero !== genre) return false;
                 if (status && game.status !== status) return false;
                 if (search) {
-                    const searchStr = `${game.nome} ${game.plataforma} ${game.genero} ${game.quem} ${game.fatorNostalgia}`.toLowerCase();
+                    const searchStr = `${game.nome} ${game.plataforma} ${game.genero} ${game.fatorNostalgia}`.toLowerCase();
                     if (!searchStr.includes(search)) return false;
                 }
                 return true;
             });
 
+            // Era order mapping
+            const eraOrder = {
+                'Atari': 1, 'MS-DOS': 1, 'Dynavision': 1,
+                'Super Famicom': 2,
+                'PlayStation 1': 3, 'PlayStation 2': 3,
+                'PlayStation 3': 4, 'Xbox 360': 4, 'PC': 4,
+                'PlayStation 4': 5, 'PlayStation 5': 5, 'Switch 2': 5
+            };
+
             // Sort
             switch (sort) {
+                case 'linha-do-tempo':
+                    filteredGames.sort((a, b) => {
+                        const eraA = eraOrder[a.plataforma] || 99;
+                        const eraB = eraOrder[b.plataforma] || 99;
+                        if (eraA !== eraB) return eraA - eraB;
+                        return a.anoJogado - b.anoJogado;
+                    });
+                    break;
                 case 'nome-az':
                     filteredGames.sort((a, b) => a.nome.localeCompare(b.nome));
                     break;
@@ -1459,7 +1514,6 @@
                             <span class="detail-tag">&#127918; ${game.anoJogado}</span>
                         </div>
                         ${game.fatorNostalgia ? `<div class="card-nostalgia">${game.fatorNostalgia}</div>` : ''}
-                        <div class="card-quem">Jogado por: ${game.quem}</div>
                     </div>
                 `;
             }).join('');
@@ -1527,10 +1581,6 @@
                         <span class="modal-field-value">${game.anoJogado}</span>
                     </div>
                     <div class="modal-field">
-                        <span class="modal-field-label">Jogado por</span>
-                        <span class="modal-field-value">${game.quem}</span>
-                    </div>
-                    <div class="modal-field">
                         <span class="modal-field-label">Fator Nostalgia</span>
                         <span class="modal-field-value">${game.fatorNostalgia || 'N/A'}</span>
                     </div>
@@ -1578,7 +1628,7 @@
 
         // ========== EXPORT CSV ==========
         function exportCSV() {
-            const headers = ['Nome', 'Plataforma', 'Ano Lancamento', 'Ano Jogado', 'Genero', 'Status', 'Fator Nostalgia', 'Nota Final', 'Quem', 'Memorias', 'Descricao'];
+            const headers = ['Nome', 'Plataforma', 'Ano Lancamento', 'Ano Jogado', 'Genero', 'Status', 'Fator Nostalgia', 'Nota Final', 'Memorias', 'Descricao'];
             const rows = filteredGames.map(g => [
                 `"${g.nome}"`,
                 `"${g.plataforma}"`,
@@ -1588,7 +1638,6 @@
                 `"${g.status}"`,
                 `"${g.fatorNostalgia}"`,
                 `"${g.notaFinal}"`,
-                `"${g.quem}"`,
                 `"${(g.memorias || '').replace(/"/g, '""')}"`,
                 `"${(g.descricao || '').replace(/"/g, '""')}"`
             ]);
