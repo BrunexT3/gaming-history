@@ -1043,6 +1043,193 @@
                 font-size: 0.8rem;
             }
         }
+
+        /* ========== TABS ========== */
+        .tabs {
+            max-width: 1400px;
+            margin: 1.5rem auto 0;
+            padding: 0 2rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .tab-btn {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+            padding: 0.9rem 1.4rem;
+            border: 1px solid var(--border-color);
+            border-bottom: none;
+            border-radius: 10px 10px 0 0;
+            background: var(--bg-secondary);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn:hover { color: var(--text-primary); }
+
+        .tab-btn.active {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border-color: #533483;
+            box-shadow: 0 -3px 0 #533483 inset;
+        }
+
+        .tab-view { display: none; }
+        .tab-view.active { display: block; }
+
+        /* ========== CONQUISTAS (Troféus & Horas) ========== */
+        .conquistas-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .conquistas-head h2 {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            margin-bottom: 0.6rem;
+        }
+
+        .conquistas-head p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .conq-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .conq-stat {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.1rem 1.2rem;
+            box-shadow: var(--shadow-card);
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .conq-stat-icon { font-size: 1.7rem; line-height: 1; }
+        .conq-stat-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .conq-stat-label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+
+        .conq-note {
+            background: rgba(83, 52, 131, 0.08);
+            border: 1px dashed #533483;
+            border-radius: 10px;
+            padding: 0.9rem 1.1rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.8rem;
+            line-height: 1.5;
+        }
+        .conq-note strong { color: var(--text-primary); }
+
+        .conq-year { margin-bottom: 2rem; }
+        .conq-year-head {
+            display: flex;
+            align-items: baseline;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        .conq-year-title {
+            font-family: 'Press Start 2P', monospace;
+            font-size: 0.95rem;
+            color: #533483;
+        }
+        .conq-year-sub {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .conq-table-wrap { overflow-x: auto; }
+        .conq-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 640px;
+        }
+        .conq-table th {
+            text-align: left;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            padding: 0.6rem 0.9rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .conq-table th.num, .conq-table td.num { text-align: right; }
+        .conq-table td {
+            padding: 0.8rem 0.9rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-size: 0.92rem;
+        }
+        .conq-table tbody tr:hover { background: var(--bg-card-hover); }
+        .conq-game-name { font-weight: 600; }
+        .conq-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+        }
+        .conq-empty { color: var(--text-muted); }
+
+        .conq-plat-badge {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: #fff;
+            white-space: nowrap;
+        }
+        .conq-origem {
+            display: inline-block;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0.15rem 0.45rem;
+            border-radius: 5px;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            margin-left: 0.4rem;
+        }
+        .conq-platina {
+            color: #f0c040;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .conq-table tfoot td {
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            border-top: 2px solid var(--border-color);
+            border-bottom: none;
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .tabs { padding: 0 1rem; }
+            .tab-btn { font-size: 0.6rem; padding: 0.75rem 1rem; }
+            .conquistas-section { padding: 1.2rem; }
+        }
     </style>
 </head>
 <body data-theme="light">
@@ -1135,6 +1322,15 @@
         </div>
     </header>
 
+    <!-- Tabs -->
+    <nav class="tabs">
+        <button class="tab-btn active" id="tabHistorico" onclick="switchTab('historico')">&#127918; Histórico</button>
+        <button class="tab-btn" id="tabConquistas" onclick="switchTab('conquistas')">&#127942; Troféus &amp; Horas</button>
+    </nav>
+
+    <!-- View: Histórico -->
+    <div id="view-historico" class="tab-view active">
+
     <!-- Filters -->
     <section class="filters-section">
         <div class="search-bar">
@@ -1204,6 +1400,20 @@
             <p>Tente ajustar os filtros ou a busca.</p>
         </div>
     </main>
+    </div><!-- /view-historico -->
+
+    <!-- View: Troféus & Horas -->
+    <div id="view-conquistas" class="tab-view">
+        <section class="conquistas-section">
+            <div class="conquistas-head">
+                <h2>Troféus &amp; Horas</h2>
+                <p>Jogos finalizados no PlayStation e no PC (Steam), acompanhados por ano - horas jogadas e troféus conquistados.</p>
+            </div>
+            <div class="conq-stats" id="conqStats"></div>
+            <div class="conq-note" id="conqNote"></div>
+            <div id="conqContent"></div>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -1460,7 +1670,9 @@
             { nome: "Sonic Forces", plataforma: "PlayStation 4", anoLancamento: 2017, anoJogado: 2022, genero: "Plataforma", status: "Finalizado", fatorNostalgia: "Sem Nostalgia", notaFinal: "6", memorias: "", descricao: "Plataforma 3D do Sonic com avatar customizavel e fases classicas e modernas." },
             { nome: "Lego DC Super-Villains", plataforma: "PlayStation 4", anoLancamento: 2018, anoJogado: 2022, genero: "Acao-aventura", status: "Finalizado", fatorNostalgia: "Sem Nostalgia", notaFinal: "6", memorias: "", descricao: "Aventura Lego onde voce cria um vilao e une forcas com viloes da DC Comics." },
             { nome: "Alien: Isolation", plataforma: "PlayStation 4", anoLancamento: 2014, anoJogado: 2024, genero: "Survival Horror", status: "Finalizado", fatorNostalgia: "Sem Nostalgia", notaFinal: "6", memorias: "", descricao: "Horror de sobrevivencia onde Amanda Ripley foge de um Xenomorfo implacavel em estacao espacial." },
+            { nome: "Rise of the Tomb Raider", plataforma: "PlayStation 4", anoLancamento: 2015, anoJogado: 2024, genero: "Acao-aventura", status: "Finalizado", fatorNostalgia: "Sem Nostalgia", notaFinal: "7", memorias: "", descricao: "Lara Croft busca a cidade perdida de Kitezh na Siberia enfrentando a Trindade. Segundo jogo da trilogia reboot." },
             { nome: "Shadow of the Tomb Raider", plataforma: "PlayStation 4", anoLancamento: 2018, anoJogado: 2024, genero: "Acao-aventura", status: "Finalizado", fatorNostalgia: "Sem Nostalgia", notaFinal: "6", memorias: "", descricao: "Lara Croft enfrenta a Trindade na America do Sul em conclusao da trilogia reboot." },
+            { nome: "Horizon Zero Dawn", plataforma: "PlayStation 4", anoLancamento: 2017, anoJogado: 2025, genero: "RPG de Acao", status: "Finalizado", fatorNostalgia: "Sem Nostalgia", notaFinal: "9", memorias: "", descricao: "Aloy explora um mundo pos-apocaliptico dominado por maquinas para descobrir seu passado e a origem da humanidade." },
             { nome: "Uncharted - Drake's Fortune", plataforma: "PlayStation 4", anoLancamento: 2007, anoJogado: 2025, genero: "Acao-aventura", status: "Nao Finalizado", fatorNostalgia: "Sem Nostalgia", notaFinal: "10", memorias: "", descricao: "Primeira aventura de Nathan Drake em busca do tesouro de El Dorado. Inicio da saga." },
             { nome: "Far Cry Primal", plataforma: "PlayStation 4", anoLancamento: 2016, anoJogado: 2025, genero: "Acao-aventura", status: "Finalizado", fatorNostalgia: "Sem Nostalgia", notaFinal: "6", memorias: "", descricao: "Shooter em mundo aberto na era da Idade da Pedra com domesticacao de animais selvagens." },
             { nome: "theHunter: Call of the Wild", plataforma: "PlayStation 4", anoLancamento: 2017, anoJogado: 2025, genero: "Simulacao", status: "Finalizado", fatorNostalgia: "Sem Nostalgia", notaFinal: "6", memorias: "", descricao: "Simulador de caca realista em reservas naturais vastas com fauna diversa." },
@@ -1596,8 +1808,20 @@
             'PlayStation 5': '#00439C',
             'Xbox 360': '#107C10',
             'PC': '#555555',
-            'Switch 2': '#E60012'
+            'Switch 2': '#E60012',
+            'Steam': '#1b2838'
         };
+
+        // ========== CONQUISTAS (Troféus & Horas) ==========
+        // origem: "PlayStation" | "Steam"
+        // horas / trofeus: null quando ainda nao preenchido (mostra "-")
+        // platina: true = platinou (PSN) ou 100% (Steam)
+        const conquistas = [
+            { nome: "Tomb Raider", plataforma: "PlayStation 4", ano: 2024, horas: null, trofeus: null, platina: false, origem: "PlayStation" },
+            { nome: "Rise of the Tomb Raider", plataforma: "PlayStation 4", ano: 2024, horas: null, trofeus: null, platina: false, origem: "PlayStation" },
+            { nome: "Shadow of the Tomb Raider", plataforma: "PlayStation 4", ano: 2024, horas: null, trofeus: null, platina: false, origem: "PlayStation" },
+            { nome: "Horizon Zero Dawn", plataforma: "PlayStation 4", ano: 2025, horas: null, trofeus: null, platina: false, origem: "PlayStation" }
+        ];
 
         const platformShortNames = {
             'Atari': 'Atari',
@@ -1626,6 +1850,7 @@
             buildGenreFilter();
             updateStats();
             applyFilters();
+            renderConquistas();
         }
 
         function buildPlatformFilters() {
@@ -1945,6 +2170,126 @@
                 document.body.removeChild(input);
                 showToast('Link copiado!');
             });
+        }
+
+        // ========== TABS ==========
+        function switchTab(tab) {
+            const isHist = tab === 'historico';
+            document.getElementById('view-historico').classList.toggle('active', isHist);
+            document.getElementById('view-conquistas').classList.toggle('active', !isHist);
+            document.getElementById('tabHistorico').classList.toggle('active', isHist);
+            document.getElementById('tabConquistas').classList.toggle('active', !isHist);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ========== CONQUISTAS (Troféus & Horas) ==========
+        function fmtNum(n) {
+            return n === null || n === undefined
+                ? '<span class="conq-empty">&mdash;</span>'
+                : `<span class="conq-num">${n}</span>`;
+        }
+
+        function renderConquistas() {
+            // --- Stats gerais ---
+            const totalJogos = conquistas.length;
+            const horasArr = conquistas.map(c => c.horas).filter(h => h !== null && h !== undefined);
+            const trofArr = conquistas.map(c => c.trofeus).filter(t => t !== null && t !== undefined);
+            const totalHoras = horasArr.reduce((a, b) => a + b, 0);
+            const totalTrof = trofArr.reduce((a, b) => a + b, 0);
+            const totalPlat = conquistas.filter(c => c.platina).length;
+            const pendentes = conquistas.filter(c => c.horas === null || c.trofeus === null).length;
+
+            document.getElementById('conqStats').innerHTML = `
+                <div class="conq-stat">
+                    <div class="conq-stat-icon">&#127918;</div>
+                    <div><div class="conq-stat-number">${totalJogos}</div><div class="conq-stat-label">Jogos Finalizados</div></div>
+                </div>
+                <div class="conq-stat">
+                    <div class="conq-stat-icon">&#9201;&#65039;</div>
+                    <div><div class="conq-stat-number">${horasArr.length ? totalHoras + 'h' : '&mdash;'}</div><div class="conq-stat-label">Horas Jogadas</div></div>
+                </div>
+                <div class="conq-stat">
+                    <div class="conq-stat-icon">&#127942;</div>
+                    <div><div class="conq-stat-number">${trofArr.length ? totalTrof : '&mdash;'}</div><div class="conq-stat-label">Troféus</div></div>
+                </div>
+                <div class="conq-stat">
+                    <div class="conq-stat-icon">&#128142;</div>
+                    <div><div class="conq-stat-number">${totalPlat}</div><div class="conq-stat-label">Platinas / 100%</div></div>
+                </div>
+            `;
+
+            // --- Nota sobre dados pendentes ---
+            const noteEl = document.getElementById('conqNote');
+            if (pendentes > 0) {
+                noteEl.style.display = 'block';
+                noteEl.innerHTML = `<strong>${pendentes} jogo(s)</strong> ainda sem horas ou troféus preenchidos (aparecem como &mdash;). Dados pessoais de PSN/Steam não são puxados automaticamente &mdash; me passa os números e eu atualizo a lista.`;
+            } else {
+                noteEl.style.display = 'none';
+            }
+
+            // --- Agrupado por ano (desc) ---
+            const anos = [...new Set(conquistas.map(c => c.ano))].sort((a, b) => b - a);
+            const content = anos.map(ano => {
+                const jogos = conquistas
+                    .filter(c => c.ano === ano)
+                    .sort((a, b) => a.nome.localeCompare(b.nome));
+
+                const hSum = jogos.map(j => j.horas).filter(h => h !== null && h !== undefined).reduce((a, b) => a + b, 0);
+                const hAny = jogos.some(j => j.horas !== null && j.horas !== undefined);
+                const tSum = jogos.map(j => j.trofeus).filter(t => t !== null && t !== undefined).reduce((a, b) => a + b, 0);
+                const tAny = jogos.some(j => j.trofeus !== null && j.trofeus !== undefined);
+
+                const rows = jogos.map(j => {
+                    const color = getPlatformColor(j.plataforma);
+                    const short = platformShortNames[j.plataforma] || j.plataforma;
+                    const platina = j.platina
+                        ? `<span class="conq-platina" title="Platinado / 100%">&#128142; ${j.origem === 'Steam' ? '100%' : 'Platina'}</span>`
+                        : '<span class="conq-empty">&mdash;</span>';
+                    return `
+                        <tr>
+                            <td><span class="conq-game-name">${j.nome}</span></td>
+                            <td>
+                                <span class="conq-plat-badge" style="background:${color};">${short}</span>
+                                <span class="conq-origem">${j.origem === 'Steam' ? 'Steam' : 'PSN'}</span>
+                            </td>
+                            <td class="num">${fmtNum(j.horas === null ? null : j.horas + 'h')}</td>
+                            <td class="num">${fmtNum(j.trofeus)}</td>
+                            <td class="num">${platina}</td>
+                        </tr>`;
+                }).join('');
+
+                return `
+                    <div class="conq-year">
+                        <div class="conq-year-head">
+                            <span class="conq-year-title">${ano}</span>
+                            <span class="conq-year-sub">${jogos.length} jogo(s)${hAny ? ' &middot; ' + hSum + 'h' : ''}${tAny ? ' &middot; ' + tSum + ' troféus' : ''}</span>
+                        </div>
+                        <div class="conq-table-wrap">
+                            <table class="conq-table">
+                                <thead>
+                                    <tr>
+                                        <th>Jogo</th>
+                                        <th>Plataforma</th>
+                                        <th class="num">Horas</th>
+                                        <th class="num">Troféus</th>
+                                        <th class="num">Platina</th>
+                                    </tr>
+                                </thead>
+                                <tbody>${rows}</tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="2">Total ${ano}</td>
+                                        <td class="num">${hAny ? hSum + 'h' : '&mdash;'}</td>
+                                        <td class="num">${tAny ? tSum : '&mdash;'}</td>
+                                        <td class="num"></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>`;
+            }).join('');
+
+            document.getElementById('conqContent').innerHTML = content;
         }
 
         // ========== TOAST ==========
